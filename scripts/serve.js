@@ -9,7 +9,8 @@ const port = Number(process.env.PORT || 4173);
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8'
+  '.js': 'text/javascript; charset=utf-8',
+  '.svg': 'image/svg+xml'
 };
 
 const server = createServer(async (request, response) => {

@@ -184,6 +184,8 @@ const RoomieApp = (() => {
     try {
       const sampleFile = await createSampleFile();
       await setFile(sampleFile);
+    } catch (error) {
+      showToast('샘플 공간을 만들 수 없습니다. 브라우저를 확인해 주세요.');
     } finally {
       dom.sampleButton.disabled = false;
     }
