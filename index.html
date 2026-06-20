@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="방 사진의 빛과 색, 생활 조건을 바탕으로 스타일과 배치 아이디어를 제안하는 브라우저 기반 인테리어 코디네이터">
+  <meta name="theme-color" content="#f5f2ec">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Roomie — 브라우저 인테리어 코디네이터">
+  <meta property="og:description" content="사진 분석부터 스타일, 가구 배치, 실행 계획까지 하나의 흐름으로 제안합니다.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' blob: data:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <title>Roomie — 브라우저 인테리어 코디네이터</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">본문으로 바로가기</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Roomie 홈">
+      <span class="brand__mark" aria-hidden="true">R</span>
+      <span>Roomie</span>
+    </a>
+    <p class="site-header__badge">브라우저 분석 · 사진은 외부로 전송되지 않아요</p>
+  </header>
+
+  <main id="mainContent">
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <div class="hero__copy">
+        <p class="eyebrow">BROWSER-BASED INTERIOR COORDINATOR</p>
+        <h1 id="heroTitle">지금의 방에서,<br><em>더 나은 생활</em>을 그려보세요.</h1>
+        <p class="hero__description">브라우저 이미지 분석과 규칙 기반 추천으로 사진의 빛과 색을 읽고, 실행 가능한 스타일·예산·배치 아이디어를 제안합니다.</p>
+        <a class="button button--dark" href="#projectForm">내 공간 분석하기 <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="room-illustration">
+          <span class="room-illustration__sun"></span>
+          <span class="room-illustration__frame"></span>
+          <span class="room-illustration__sofa"></span>
+          <span class="room-illustration__table"></span>
+          <span class="room-illustration__plant"></span>
+        </div>
+        <p><strong>01</strong> Upload &amp; understand</p>
+      </div>
+    </section>
+
+    <nav class="stepper" aria-label="진행 단계">
+      <ol>
+        <li class="stepper__item is-current" data-step="1" aria-current="step"><span>01</span> 공간 정보</li>
+        <li class="stepper__item" data-step="2"><span>02</span> 사진 분석</li>
+        <li class="stepper__item" data-step="3"><span>03</span> 스타일 선택</li>
+        <li class="stepper__item" data-step="4"><span>04</span> 배치 최적화</li>
+        <li class="stepper__item" data-step="5"><span>05</span> 콘셉트 시안</li>
+      </ol>
+    </nav>
+
+    <section class="workspace" id="projectForm" aria-labelledby="projectTitle">
+      <div class="section-heading">
+        <p class="eyebrow">STEP 01</p>
+        <h2 id="projectTitle">공간을 알려주세요</h2>
+        <p>정확한 추천을 위해 사진만으로 알 수 없는 조건을 함께 입력합니다.</p>
+      </div>
+
+      <form class="project-form" id="roomForm">
+        <fieldset class="form-card">
+          <legend>기본 조건</legend>
+          <div class="form-grid">
+            <label class="field">
+              <span>공간 유형</span>
+              <select id="roomType" name="roomType">
+                <option value="living">거실</option>
+                <option value="bedroom">침실</option>
+                <option value="studio">원룸</option>
+                <option value="office">홈 오피스</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>대략적인 크기</span>
+              <select id="roomSize" name="roomSize">
+                <option value="small">6평 이하</option>
+                <option value="medium" selected>7–12평</option>
+                <option value="large">13평 이상</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>예산</span>
+              <select id="budget" name="budget">
+                <option value="light">50만원 이하</option>
+                <option value="balanced" selected>50–150만원</option>
+                <option value="full">150만원 이상</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>가장 중요한 목표</span>
+              <select id="priority" name="priority">
+                <option value="storage">수납 개선</option>
+                <option value="light">더 밝은 공간</option>
+                <option value="rest">편안한 휴식</option>
+                <option value="work">집중과 생산성</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-card form-card--upload">
+          <legend>공간 사진</legend>
+          <label class="upload" id="uploadArea" for="fileInput">
+            <input id="fileInput" name="roomPhoto" type="file" accept="image/jpeg,image/png,image/webp">
+            <span class="upload__icon" aria-hidden="true">＋</span>
+            <strong>사진을 끌어놓거나 선택하세요</strong>
+            <span>JPG, PNG, WEBP · 최대 10MB</span>
+          </label>
+          <button class="text-button sample-button" id="sampleButton" type="button">사진 없이 샘플 공간으로 체험하기</button>
+
+          <div class="photo-preview" id="photoPreview" hidden>
+            <img id="previewImage" alt="선택한 공간 사진">
+            <div class="photo-preview__meta">
+              <p><strong id="fileName"></strong><span id="fileMeta"></span></p>
+              <button class="text-button" id="removeButton" type="button">사진 삭제</button>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <p><span aria-hidden="true">●</span> 사진은 이 브라우저 안에서만 처리됩니다.</p>
+          <button class="button button--accent" id="analyzeButton" type="submit" disabled>공간 분석 시작 <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </section>
+
+    <section class="analysis" id="analysisSection" aria-labelledby="analysisTitle" hidden>
+      <div class="section-heading">
+        <p class="eyebrow">STEP 02</p>
+        <h2 id="analysisTitle">사진에서 읽은 공간의 인상</h2>
+        <p>전체 사진의 밝기·채도·주요 색조와 입력한 생활 조건을 함께 해석했습니다.</p>
+      </div>
+
+      <div class="analysis__status" id="analysisStatus" role="status" aria-live="polite"></div>
+      <div class="analysis-grid" id="analysisGrid" hidden>
+        <article class="metric-card">
+          <span class="metric-card__index">01</span>
+          <p>평균 밝기</p>
+          <strong id="brightnessValue">–</strong>
+          <div class="meter"><span id="brightnessMeter"></span></div>
+          <small id="brightnessNote"></small>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__index">02</span>
+          <p>색감과 온도</p>
+          <strong id="colorValue">–</strong>
+          <div class="swatch" id="dominantSwatch" aria-label="사진 주요 색조"></div>
+          <small id="colorNote"></small>
+        </article>
+        <article class="metric-card">
+          <span class="metric-card__index">03</span>
+          <p>우선 개선점</p>
+          <strong id="priorityValue">–</strong>
+          <ul id="improvementList"></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="styles" id="styleSection" aria-labelledby="styleTitle" hidden>
+      <div class="section-heading">
+        <p class="eyebrow">STEP 03</p>
+        <h2 id="styleTitle">공간에 어울리는 방향</h2>
+        <p>분석 결과에 맞춰 순위를 정했습니다. 원하는 스타일로 바꿀 수도 있어요.</p>
+      </div>
+      <fieldset class="style-picker" id="stylePicker">
+        <legend class="sr-only">인테리어 스타일 선택</legend>
+      </fieldset>
+      <div class="style-actions">
+        <p id="selectedStyleSummary" aria-live="polite"></p>
+        <button class="button button--dark" id="layoutButton" type="button">가구 배치 계획하기 <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="layout" id="layoutSection" aria-labelledby="layoutTitle" hidden>
+      <div class="section-heading">
+        <p class="eyebrow">STEP 04</p>
+        <h2 id="layoutTitle">가구가 머물 자리를 계산합니다</h2>
+        <p>실측 크기와 문·창문 방향을 바탕으로 충돌과 출입구 여유 공간을 검사해 세 가지 배치안을 만듭니다.</p>
+      </div>
+
+      <form class="layout-form" id="layoutForm">
+        <fieldset class="form-card">
+          <legend>방 구조</legend>
+          <div class="form-grid">
+            <label class="field">
+              <span>가로 길이 (m)</span>
+              <input id="roomWidth" name="roomWidth" type="number" min="2" max="8" step="0.1" value="4" required>
+            </label>
+            <label class="field">
+              <span>세로 길이 (m)</span>
+              <input id="roomDepth" name="roomDepth" type="number" min="2" max="8" step="0.1" value="4" required>
+            </label>
+            <label class="field">
+              <span>출입문 방향</span>
+              <select id="doorWall" name="doorWall">
+                <option value="bottom">아래쪽</option>
+                <option value="left">왼쪽</option>
+                <option value="right">오른쪽</option>
+                <option value="top">위쪽</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>주요 창문 방향</span>
+              <select id="windowWall" name="windowWall">
+                <option value="top">위쪽</option>
+                <option value="right">오른쪽</option>
+                <option value="left">왼쪽</option>
+                <option value="bottom">아래쪽</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-card">
+          <legend>배치할 가구</legend>
+          <p class="form-card__description">공간 유형에 맞는 기본 가구를 선택했습니다. 보유 가구에 맞게 조정하세요.</p>
+          <div class="furniture-picker" id="furniturePicker"></div>
+        </fieldset>
+
+        <div class="form-actions">
+          <p><span aria-hidden="true">●</span> 문·창문은 선택 벽 중앙 기준이며, 25cm 단위로 회전·충돌·여유 공간을 계산합니다.</p>
+          <button class="button button--accent" id="optimizeButton" type="submit">배치안 3개 계산 <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+
+      <div class="layout-status" id="layoutStatus" role="status" aria-live="polite"></div>
+      <div id="layoutResults" hidden>
+        <fieldset class="layout-options" id="layoutOptions">
+          <legend class="sr-only">가구 배치안 선택</legend>
+        </fieldset>
+        <div class="style-actions">
+          <p id="selectedLayoutSummary" aria-live="polite"></p>
+          <button class="button button--dark" id="generateButton" type="button">콘셉트와 실행 계획 완성 <span aria-hidden="true">↗</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="result" id="resultSection" aria-labelledby="resultTitle" hidden>
+      <div class="section-heading section-heading--split">
+        <div>
+          <p class="eyebrow">STEP 05</p>
+          <h2 id="resultTitle">나의 인테리어 콘셉트</h2>
+        </div>
+        <p>원본 사진의 색과 빛을 보정한 방향성 시안입니다.<br>가구를 실제로 합성한 이미지는 아닙니다.</p>
+      </div>
+
+      <article class="chosen-layout">
+        <div class="chosen-layout__copy">
+          <p class="eyebrow">SELECTED LAYOUT</p>
+          <h3 id="finalLayoutTitle">선택한 가구 배치</h3>
+          <p id="finalLayoutMetrics"></p>
+        </div>
+        <div class="chosen-layout__plan" id="finalLayoutPlan"></div>
+      </article>
+
+      <div class="comparison">
+        <figure>
+          <figcaption><span>BEFORE</span> 현재 공간</figcaption>
+          <img id="beforeImage" alt="변경 전 공간">
+        </figure>
+        <figure>
+          <figcaption><span>CONCEPT</span> <strong id="conceptLabel"></strong></figcaption>
+          <canvas id="conceptCanvas" role="img" aria-label="선택한 스타일을 적용한 공간 콘셉트 시안">선택한 스타일을 적용한 공간 콘셉트 시안</canvas>
+        </figure>
+      </div>
+
+      <div class="result-grid">
+        <article class="result-card">
+          <p class="eyebrow">ACTION PLAN</p>
+          <h3>먼저 바꿀 세 가지</h3>
+          <ol class="action-list" id="actionList"></ol>
+        </article>
+        <article class="result-card">
+          <p class="eyebrow">SHOPPING GUIDE</p>
+          <h3>예산 배분 가이드</h3>
+          <div class="budget-list" id="budgetList"></div>
+        </article>
+        <article class="result-card result-card--palette">
+          <p class="eyebrow">COLOR PALETTE</p>
+          <h3>추천 컬러</h3>
+          <div class="palette" id="palette"></div>
+        </article>
+      </div>
+
+      <div class="result-actions">
+        <button class="button button--outline" id="restartButton" type="button">다른 사진으로 다시 시작</button>
+        <button class="button button--dark" id="downloadButton" type="button">콘셉트 이미지 저장 <span aria-hidden="true">↓</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><span class="brand__mark" aria-hidden="true">R</span><strong>Roomie</strong></div>
+    <p>사진을 이해하고, 생활에 맞는 공간을 제안합니다.</p>
+    <small>Browser-based interior concept simulator</small>
+  </footer>
+
+  <div class="toast" id="toast" role="alert" aria-live="assertive" hidden></div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
