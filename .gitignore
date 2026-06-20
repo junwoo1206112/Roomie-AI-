@@ -1,0 +1,15 @@
+dist/
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Local specification/agent toolchains are not part of the portfolio app.
+ouroboros/
+openspec/
+.agents/
+.codex/
+.ouroboros/
+openspec-commands.sh
+openspec.bat
+INTEGRATION-GUIDE.md
